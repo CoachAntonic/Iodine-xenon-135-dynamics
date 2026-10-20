@@ -2,8 +2,6 @@
 
 Python model of iodine-135 / xenon-135 buildup in a PWR core at constant power, solved with SciPy. The script also contains a standalone 6-group point kinetics solver for a step reactivity insertion.
 
-![I-135 and Xe-135 buildup](xenon_buildup.png)
-
 ## What it does
 
 **Block 1: point kinetics (6 delayed neutron groups)**
@@ -53,18 +51,14 @@ The numerical solution after 200 000 s (about 55.6 h) gives about 6.50e15 and 1.
 - The post-shutdown xenon peak is not modeled yet (it can be obtained by restarting from equilibrium with `R_fission = 0` and `phi = 0`).
 - Not validated against plant data.
 
-## Usage
+## Sources
 
-```
-pip install numpy scipy matplotlib
-python xenon_model.py
-```
+- Wikipedia, [Xenon-135](https://en.wikipedia.org/wiki/Xenon-135): half-lives of Xe-135 (9.14 h) and I-135 (6.58 h), absorption cross-section of Xe-135 (2 to 3 million barns; 2.65×10⁻¹⁸ cm² at a flux of 10¹⁴ n·cm⁻²·s⁻¹), order of magnitude of the I-135 and Xe-135 fission yields (about 6 %).
+- *Measuring the fission yield of Xe-135 for applications*, [Springer](https://link.springer.com/article/10.1007/s10967-026-10794-3): ENDF/B-VIII.1 values for thermal fission of U-235, cumulative Xe-135 yield 6.54 %, independent yields 0.08 % (Xe-135) and 0.18 % (Xe-135m).
+- Hawkings, Edwards, Olmstead (1971), [*Independent yields of mass-135 xenons in the thermal neutron fission of 233U, 235U, 239Pu, and 241Pu*](https://cdnsciencepub.com/doi/10.1139/p71-094), Can. J. Phys.: ratio of independent Xe-135 yield to cumulative I-135 chain yield, 0.0357 for U-235.
+- [*Independent yield of 135I in the thermal neutron fission of 235U. The half-life of 135Te*](https://www.sciencedirect.com/science/article/abs/pii/0022190269900013): independent I-135 yield is 47 ± 2 % of the chain yield, Te-135 half-life 18 ± 2 s (justifies using the cumulative yield for `gamma_Iodine`).
 
-## Possible next steps
+`gamma_Iodine = 0.063` is derived, not read from a table: ENDF/B-VIII.1 cumulative Xe-135 yield (6.54 %) minus the independent Xe-135 and Xe-135m yields (about 0.26 %) gives about 6.3 %.
 
-- Shutdown transient and xenon peak
-- Power change scenarios (load following)
-- Coupling with the point kinetics block
-- Interactive version with Streamlit
 
 

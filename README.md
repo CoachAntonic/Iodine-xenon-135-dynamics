@@ -51,6 +51,13 @@ The numerical solution after 200 000 s (about 55.6 h) gives about 6.50e15 and 1.
 - The post-shutdown xenon peak is not modeled yet (it can be obtained by restarting from equilibrium with `R_fission = 0` and `phi = 0`).
 - Not validated against plant data.
 
+## Requirements 
+
+- Scipy
+- Numpy
+- Mathplotlib
+- Python 
+
 ## Sources
 
 - Wikipedia, [Xenon-135](https://en.wikipedia.org/wiki/Xenon-135): half-lives of Xe-135 (9.14 h) and I-135 (6.58 h), absorption cross-section of Xe-135 (2 to 3 million barns; 2.65×10⁻¹⁸ cm² at a flux of 10¹⁴ n·cm⁻²·s⁻¹), order of magnitude of the I-135 and Xe-135 fission yields (about 6 %).
